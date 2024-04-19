@@ -8,7 +8,8 @@
 using namespace std;
 
 Lecturer::Lecturer(const string &name)
-    : name(name), headOfCoursesGivenByLecturer(nullptr), numberOfCoursesGivenByLecturer(0)
+    : name(name), jobStatus(false),
+      headOfCoursesGivenByLecturer(nullptr), numberOfCoursesGivenByLecturer(0)
 {
 }
 
@@ -23,7 +24,7 @@ Lecturer::~Lecturer()
     }
 }
 
-void Lecturer::assignCourse(Course &course)
+void Lecturer::becomeLecturerOfCourse(Course &course)
 {
     courseElement* newCourse = new courseElement;
     newCourse->data = &course;

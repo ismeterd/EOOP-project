@@ -8,7 +8,8 @@
 using namespace std;
 
 Student::Student(const string &name)
-    : name(name), headOfCoursesTakenByStudent(nullptr), numberOfCoursesTakenByStudent(0)
+    : name(name), activeStudent(false),
+    headOfCoursesTakenByStudent(nullptr), numberOfCoursesTakenByStudent(0)
 {}
 
 Student::~Student()
@@ -22,7 +23,7 @@ Student::~Student()
     }
 }
 
-void Student::addCourse(Course &course)
+void Student::enrollCourse(Course &course)
 {
     courseElement* newCourse = new courseElement;
     newCourse->data = &course;

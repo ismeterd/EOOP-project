@@ -8,9 +8,10 @@
 
 using namespace std;
 
-Course::Course(const string &name)
-    : name(name), courseLecturer(nullptr),
-      headOfStudentsTakingCourse(nullptr), numberOfStudentsTakingCourse(0)
+Course::Course(const std::string& name, const std::string& code, int numberOfCredits)
+    : name(name),code(code), numberOfCredits(numberOfCredits),
+    courseLecturer(nullptr),
+    headOfStudentsTakingCourse(nullptr), numberOfStudentsTakingCourse(0)
 {}
 
 Course::~Course()

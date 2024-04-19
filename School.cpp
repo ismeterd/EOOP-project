@@ -43,7 +43,7 @@ School::~School()
     }
 }
 
-void School::insertLecturer(Lecturer &lecturer)
+void School::hireLecturer(Lecturer &lecturer)
 {
     lecturerElement* newLecturer = new lecturerElement;
     newLecturer->data = &lecturer;
