@@ -105,6 +105,8 @@ int main()
 ////    create new Course object
 //    Course course("Introduction to Building Iron Man", "IBIM", 4);
 //
+//    school.hireLecturer(lecturer);
+//
 //    bool test5 = school.addCourse(course, lecturer);
 ////    test5 -> true (expected)
 //    if (test5)
@@ -127,6 +129,7 @@ int main()
 //    Course course("Introduction to Building Iron Man", "IBIM", 4);
 //    Course course2("Advanced Topics in Building Iron Man", "IBIM", 4);
 //
+//    school.hireLecturer(lecturer);
 //    school.addCourse(course, lecturer);
 //
 //    bool test6 = school.addCourse(course2, lecturer);
@@ -151,6 +154,7 @@ int main()
 ////    create new Course object
 //    Course course("Introduction to Building Iron Man", "IBIM", 4);
 //
+//    school.hireLecturer(lecturer);
 //    school.addCourse(course, lecturer);
 //
 //    bool test7 = school.removeCourse(course);
@@ -194,6 +198,7 @@ int main()
 ////    create new Course object
 //    Course course("Introduction to Building Iron Man", "IBIM", 4);
 //
+//    school.hireLecturer(lecturer);
 //    school.addCourse(course, lecturer);
 //
 //    bool test9 = school.removeCourseByCode("IBIM");
@@ -207,25 +212,284 @@ int main()
 ////    and removes it if found) and returns true.
 ////    ###############################################################
 
+////    ###############################################################
+////    Case 10: Removing the Course by the Course Code (non-existing)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    bool test10 = school.removeCourseByCode("ECULT");
+////    test10 -> false (expected)
+//    if (!test10)
+////        printCourses() is called to see nothing
+//        school.printCourses();
+//
+////    Expected Result: The removeCourseByCode method cannot perform
+////    its function because it cannot find the Add Course
+////    corresponding to the entered code and returns false.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 11: Registering a New Student
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+//
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    bool test11 =school.registerStudent(student);
+////    test11 -> true (expected)
+//    if (test11)
+////        printStudents() is called to see if student is registered
+//        school.printStudents();
+//
+////    Expected Result: The registerStudent method performs its
+////    function and registers the student. returns true.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 12: Registering a New Student (with same student number)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+//
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//    Student student2("Jack Sparrow", "040237508");
+//
+//    school.registerStudent(student);
+//
+//    bool test12 =school.registerStudent(student2);
+////    test12 -> false (expected)
+//    if (!test12)
+////        printStudents() is called to see if student2 is not
+////        registered
+//        school.printStudents();
+//
+////    Expected Result: The registerStudent method cannot fulfill its
+////    function because another student is registered to the school
+////    with the same student number. and returns false. That's why
+////    only student is printed on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 13: Unregistering the Student
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+//
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.registerStudent(student);
+//
+//    bool test13 =school.unregisterStudent(student);
+////    test13 -> true (expected)
+//    if (test13)
+////        printStudents() is called to see nothing
+//        school.printStudents();
+//
+////    Expected Result: The unregisterStudent method performs its
+////    function and unregisters the student from the school,
+////    returning true. As a result, no students are printed on the
+////    screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 14: Unregistering the Student (non-existing)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+//
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    bool test14 =school.unregisterStudent(student);
+////    test14 -> false (expected)
+//    if (!test14)
+////        printStudents() is called to see nothing
+//        school.printStudents();
+//
+////    Expected Result: The unregisterStudent method cannot perform
+////    its function because the student is not registered at the
+////    school and returns false. As a result, no students are printed
+////    on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 15: Unregistering the Student by the Student Number
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+//
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.registerStudent(student);
+//
+//    bool test15 = school.unregisterStudentByStudentNumber("040237508");
+////    test15 -> true (expected)
+//    if (test15)
+////        printStudents() is called to see nothing
+//        school.printStudents();
+//
+////    Expected Result: The unregisterStudentByStudentNumber method
+////    performs its function by finding the student corresponding
+////    to the entered student number and deleting his/her
+////    registration. Returns true. Additionally, since the student
+////    record is deleted, no student will be displayed on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 16: Unregistering the Student by the Student Number
+////    (non-existing)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+//
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.registerStudent(student);
+//
+//    bool test16 = school.unregisterStudentByStudentNumber("040200871");
+////    test16 -> false (expected)
+//    if (!test16)
+////        printStudents() is called to see student
+//        school.printStudents();
+//
+////    Expected Result: The unregisterStudentByStudentNumber method
+////    cannot perform its function because it cannot find a
+////    registered student corresponding to the entered number.
+////    As a result, it returns false and prints the previously
+////    registered student on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 17: Updating the Lecturer of the Course
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer);
+//
+//    bool test17 = course.updateLecturer(lecturer2);
+////    test17 -> true (expected)
+//    if (test17)
+////        getNameOfTheCourseLecturer() returns name of the Lecturer
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: The updateLecturer method performs its
+////    function and changes the Lecturer of the course. It returns
+////    true and prints the Course Lecturer name on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 18: Updating the Lecturer of the Course (there is no
+////    currently course lecturer)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer);
+//    course.fireLecturerFromCourse();
+//
+//    bool test18 = course.updateLecturer(lecturer2);
+////    test18 -> false (expected)
+//    if (!test18)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: The updateLecturer method cannot function
+////    because updating is only possible if there is an existing
+////    Lecturer. The value false is returned and no name is written
+////    to the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 19: Updating the Lecturer of the Course (maximum course
+////    capacity)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//    Course course2("Advanced Topics in Building Iron Man", "ABIM", 4);
+//    Course course3("Introduction to Arc Reactor", "IAC", 3);
+//    Course course4("Introduction to Propulsion", "IPRO", 3);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer2);
+//    school.addCourse(course2, lecturer);
+//    school.addCourse(course3, lecturer);
+//    school.addCourse(course4, lecturer);
+//
+//    bool test19 = course.updateLecturer(lecturer);
+////    test19 -> false (expected)
+//    if (!test19)
+////        getNameOfTheCourseLecturer() returns name of the lecturer
+////        ("Tolga Ozuygur")
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: The updateLecturer method cannot fulfill its
+////    function because lecturer2 has reached its capacity by giving
+////    3 lectures in total and cannot give the 4th lecture. The
+////    value false is returned and "Tolga Ozuygur" is printed on
+////    the screen.
+////    ###############################################################
+
 //    ###############################################################
-//    Case 10: Removing the Course by the Course Code (non-existing)
+//    Case 20: Updating the Lecturer of the Course (the lecturer is
+//    not employed by school)
 //    ---------------------------------------------------------------
 //    create new School object
     School school("Warsaw University of Technology");
 //    create new Lecturer object
     Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+                       "Electronics");
 //    create new Course object
     Course course("Introduction to Building Iron Man", "IBIM", 4);
 
-    bool test10 = school.removeCourseByCode("ECULT");
-//    test10 -> false (expected)
-    if (!test10)
-//        printCourses() is called to see nothing
-        school.printCourses();
+    school.hireLecturer(lecturer);
+    school.addCourse(course, lecturer);
 
-//    Expected Result: The removeCourseByCode method cannot perform
-//    its function because it cannot find the Add Course
-//    corresponding to the entered code and returns false.
+    bool test20 = course.updateLecturer(lecturer2);
+//    test20 -> false (expected)
+    if (!test20)
+//        getNameOfTheCourseLecturer() returns empty string
+        cout << course.getNameOfTheCourseLecturer();
+
+//    Expected Result: The updateLecturer method cannot perform its
+//    function because the lecturer2 does not work at the school.
+//    The value false is returned and "Tony Stark" is printed
+//    on the screen.
 //    ###############################################################
 }
 
