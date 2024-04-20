@@ -464,9 +464,476 @@ int main()
 ////    the screen.
 ////    ###############################################################
 
+////    ###############################################################
+////    Case 20: Updating the Lecturer of the Course (the lecturer is
+////    not employed by school)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//
+//    bool test20 = course.updateLecturer(lecturer2);
+////    test20 -> false (expected)
+//    if (!test20)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: The updateLecturer method cannot perform its
+////    function because the lecturer2 does not work at the school.
+////    The value false is returned and "Tony Stark" is printed
+////    on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 21: Updating the Lecturer of the Course
+////    (course is not active)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//
+//    bool test21 = course.updateLecturer(lecturer2);
+////    test21 -> false (expected)
+//    if (!test21)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: The updateLecturer function cannot perform
+////    its function because the course has not been added by the
+////    school, that is, it is not an active course, and as a result,
+////    it returns false. Nothing is printed on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 22: Firing the Lecturer from the Course
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//
+//    bool test22 = course.fireLecturerFromCourse();
+////    test22 -> true (expected)
+//    if (test22)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: fireLecturerFromCourse method executes and
+////    terminates the lecturer's course task, returning true. Nothing
+////    is printed on the screen because there is no lecturer for the
+////    course anymore.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 23: Firing the Lecturer from the Course
+////    (there is no currently course lecturer)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//    course.fireLecturerFromCourse();
+//
+//    bool test23 = course.fireLecturerFromCourse();
+////    test23 -> false (expected)
+//    if (!test23)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: fireLecturerFromCourse cannot perform the
+////    function because the course does not currently have a
+////    lecturer. It returns false and nothing is printed to the
+////    screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 24: Firing the Lecturer from the Course
+////    (course is not active)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//    school.removeCourse(course);
+//
+//    bool test24 = course.fireLecturerFromCourse();
+////    test24 -> false (expected)
+//    if (!test24)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: fireLecturerFromCourse cannot perform its
+////    function because the course is not currently offered by
+////    the school. It returns false and does not print anything
+////    to the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 26: Assigning a Lecturer to the Course
+////    (the lecturer is not employed by school)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//    course.fireLecturerFromCourse();
+//
+//    bool test26 = course.assignLecturer(lecturer2);
+////    test26 -> false (expected)
+//    if (!test26)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: The assignLecturer method cannot fulfill its
+////    function because the lecturer to be assigned does not work at
+////    the school. It returns false and does not print anything to
+////    the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 27: Assigning a Lecturer to the Course
+////    (maximum course capacity)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//    Course course2("Advanced Topics in Building Iron Man", "ABIM", 4);
+//    Course course3("Introduction to Arc Reactor", "IAC", 3);
+//    Course course4("Introduction to Propulsion", "IPRO", 3);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer2);
+//    school.addCourse(course2, lecturer);
+//    school.addCourse(course3, lecturer);
+//    school.addCourse(course4, lecturer);
+//
+//    bool test27 = course.assignLecturer(lecturer2);
+////    test27 -> false (expected)
+//    if (!test27)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: The assignLecturer method cannot fulfill
+////    its function because the lecturer to be assigned gives
+////    the maximum number of lectures. It returns false and does
+////    not print anything to
+////    the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 28: Assigning a Lecturer to the Course
+////    (course is not active)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer);
+//    school.removeCourse(course);
+//
+//    bool test28 = course.assignLecturer(lecturer2);
+////    test28 -> false (expected)
+//    if (!test28)
+////        getNameOfTheCourseLecturer() returns empty string
+//        cout << course.getNameOfTheCourseLecturer();
+//
+////    Expected Result: The assignLecturer method cannot function
+////    because the course is not offered by the school, meaning it is
+////    not active. It returns false and does not print anything to
+////    the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 29: Quitting Teaching the Course
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//
+//    bool test29 = lecturer.quitTeachingTheCourse(course);
+////    test29 -> true (expected)
+//    if (test29)
+////        printCourses print course(s) given by lecturer
+//        lecturer.printCourses();
+//
+////    Expected Result: The quitTeachingTheCourse method executes its
+////    function and terminates the Lecturer's task in the course. It
+////    functions the same as the fireLecturerFromCourse function of
+////    the Course class. It returns true and does not print anything
+////    to the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 30: Quitting Teaching the Course
+////    (the lecturer is not employed by school)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//    school.fireLecturer(lecturer);
+//
+//    bool test30 = lecturer.quitTeachingTheCourse(course);
+////    test30 -> false (expected)
+//    if (!test30)
+////        printCourses print course(s) given by lecturer
+//        lecturer.printCourses();
+//
+////    Expected Result: The quitTeachingTheCourse method cannot
+////    perform its function because the lecturer is not actively
+////    working at the school. It returns false and does not print
+////    anything to the screen because, in this scenario, the course
+////    instructor has left the school.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 31: Quitting Teaching the Course
+////    (the lecturer of the course is not (this) lecturer)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer);
+//
+//    bool test31 = lecturer2.quitTeachingTheCourse(course);
+////    test31 -> false (expected)
+//    if (!test31)
+////        printCourses print course(s) given by lecturer
+//        lecturer.printCourses();
+//
+////    Expected Result: The quitTeachingTheCourse method cannot
+////    function because lecturer2 is not the lecturer of the course.
+////    It returns false and prints the course
+////    ("Introduction to Building Iron Man") given by the lecturer
+////    ("Tony Stark") on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 32: Quitting Teaching the Course
+////    (course is not active)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//    school.removeCourse(course);
+//
+//    bool test32 = lecturer.quitTeachingTheCourse(course);
+////    test32 -> false (expected)
+//    if (!test32)
+////        printCourses print course(s) given by lecturer
+//        lecturer.printCourses();
+//
+////    Expected Result: The quitTeachingTheCourse method cannot
+////    fulfill its function because the course is no longer offered
+////    by the school, so the lecturer cannot be the lecturer of the
+////    inactive course. It returns false and in this scenario,
+////    nothing is printed because the lecturer does not offer another
+////    course.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 33: Becoming Lecturer of the Course
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer);
+//    lecturer.quitTeachingTheCourse(course);
+//
+//    bool test33 = lecturer2.becomeLecturerOfCourse(course);
+////    test33 -> true (expected)
+//    if (test33)
+////        printCourses print course(s) given by lecturer2
+//        lecturer2.printCourses();
+//
+////    Expected Result: The becomeLecturerOfCourse method performs
+////    its function and lecturer2 becomes the lecturer of the course
+////    that does not have a lecturer. It returns true and this course
+////    started by lecturer2 is printed on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 34: Becoming Lecturer of the Course
+////    (the lecturer is not employed by school)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//    lecturer.quitTeachingTheCourse(course);
+//
+//    bool test34 = lecturer2.becomeLecturerOfCourse(course);
+////    test34 -> false (expected)
+//    if (!test34)
+////        printCourses print course(s) given by lecturer2
+//        lecturer2.printCourses();
+//
+////    Expected Result: The becomeLecturerOfCourse method is executed
+////    and lecturer2 is not currently employed at the school (he may
+////    have never been hired or may have been fired). It returns
+////    false and in this scenario nothing is printed to the screen
+////    because lecturer2 cannot work at the school.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 35: Becoming Lecturer of the Course
+////    (maximum course capacity)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//    Course course2("Advanced Topics in Building Iron Man", "ABIM", 4);
+//    Course course3("Introduction to Arc Reactor", "IAC", 3);
+//    Course course4("Introduction to Propulsion", "IPRO", 3);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer);
+//    school.addCourse(course2, lecturer);
+//    school.addCourse(course3, lecturer);
+//    school.addCourse(course4, lecturer2);
+//    lecturer2.quitTeachingTheCourse(course4);
+//
+//    bool test35 = lecturer.becomeLecturerOfCourse(course4);
+////    test35 -> false (expected)
+//    if (!test35)
+////        printCourses print course(s) given by lecturer
+//        lecturer.printCourses();
+//
+////    Expected Result: The becomeLecturerOfCourse method cannot
+////    function because the lecturer has reached the maximum number
+////    of courses he can teach. It returns false and course, course2
+////    and course3 are printed to the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 36: Becoming Lecturer of the Course
+////    (the course may already have a lecturer)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer);
+//
+//    bool test36 = lecturer2.becomeLecturerOfCourse(course);
+////    test36 -> false (expected)
+//    if (!test36)
+////        printCourses print course(s) given by lecturer2
+//        lecturer2.printCourses();
+//
+////    Expected Result: The becomeLecturerOfCourse method cannot
+////    perform because the course already has a lecturer.
+////    It returns false and nothing is printed to the screen in
+////    this scenario.
+////    ###############################################################
+
 //    ###############################################################
-//    Case 20: Updating the Lecturer of the Course (the lecturer is
-//    not employed by school)
+//    Case 37: Becoming Lecturer of the Course
+//    (course is not active)
 //    ---------------------------------------------------------------
 //    create new School object
     School school("Warsaw University of Technology");
@@ -478,18 +945,19 @@ int main()
     Course course("Introduction to Building Iron Man", "IBIM", 4);
 
     school.hireLecturer(lecturer);
+    school.hireLecturer(lecturer2);
     school.addCourse(course, lecturer);
+    school.removeCourse(course);
 
-    bool test20 = course.updateLecturer(lecturer2);
-//    test20 -> false (expected)
-    if (!test20)
-//        getNameOfTheCourseLecturer() returns empty string
-        cout << course.getNameOfTheCourseLecturer();
+    bool test37 = lecturer2.becomeLecturerOfCourse(course);
+//    test37 -> false (expected)
+    if (!test37)
+//        printCourses print course(s) given by lecturer2
+        lecturer2.printCourses();
 
-//    Expected Result: The updateLecturer method cannot perform its
-//    function because the lecturer2 does not work at the school.
-//    The value false is returned and "Tony Stark" is printed
-//    on the screen.
+//    Expected Result: The becomeLecturerOfCourse method cannot
+//    function because the course is no longer offered by the
+//    school (it may never have been offered). It returns false and
+//    nothing is printed to the screen in this scenario.
 //    ###############################################################
 }
-
