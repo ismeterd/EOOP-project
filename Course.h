@@ -132,8 +132,10 @@ private:
 //    numberOfCredits: Corresponds to the number of credits of the course like ECTS (e.g. 4 ECTS)
     int numberOfCredits;
 //    courseStatus: It is the variable that indicates whether the course is active or not.
-//      - true: The course has a Lecturer, so students can enroll.
-//      - false: The course has not a Lecturer, so students cannot enroll.
+//      - true: The course is offered by the school, so students can enroll, lecturer
+//      can become of the lecturer of the course
+//      - false: The course is offered by the school, so students cannot enroll, lecturer
+//      can not become of the lecturer of the course
     bool courseStatus;
 
 //    courseLecturer: Points to the Lecturer of the course, otherwise it is nullptr.
