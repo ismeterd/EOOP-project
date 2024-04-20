@@ -85,6 +85,7 @@ public:
 //      - false: If the process of adding the Student to the Course is unsuccessful
 //          -> The Course may not have been opened/offered by the school (status=false)
 //          -> Student may not be registered in the School
+//          -> The Student may already be enrolled in the course
 //          -> The course may be at capacity...
     bool addStudent(Student& student);
 //    removeStudent
@@ -97,6 +98,7 @@ public:
 //    # Return
 //      - true: If the process of removing the Student from the Course is successful
 //      - false: If the process of removing the Student from the Course is unsuccessful
+//          -> The Student may not be enrolled in school
 //          -> The Course may not have been opened/offered by the school (status=false)
 //          -> The student may not be currently taking this course...
     bool removeStudent(Student& student);
@@ -118,6 +120,13 @@ public:
 //      - true: If the Course has a Lecturer
 //      - false: If the Course has not a Lecturer
     bool isThereACourseLecturer() const;
+//    isCourseCapacityFull
+//    # Function
+//      -> Returns whether the Course is at full capacity
+//    # Return
+//      - true: If the Course is at full capacity
+//      - false: If the Course is not at full capacity
+    bool isCourseCapacityFull() const;
 
 //    Getter functions for private data members
     std::string getName() const;

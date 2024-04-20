@@ -140,6 +140,7 @@ public:
 //          -> The Student may not be enrolled in school
 //          -> The Course may not be open (such a Course may not be offered by
 //          the school)
+//          -> The Course may be at capacity
 //          -> The Student may already be enrolled in the course...
     bool addStudentToCourse(Student& student, Course& course);
 //    removeStudentFromCourse

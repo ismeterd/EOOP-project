@@ -60,6 +60,7 @@ public:
 //      - false: If the process of enrolling the Student for the Course is unsuccessful
 //          -> The Student may not be currently enrolled in the School
 //          -> The Student may already be a Student of the Course
+//          -> The course may be at capacity
 //          -> The Course may not be active (The School may not have added the Course
 //          or the Course may not have a Lecturer)...
     bool enrollCourse(Course& course);

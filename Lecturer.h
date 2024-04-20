@@ -52,6 +52,15 @@ public:
 //          -> The Lecturer may not currently be teaching this course...
     bool quitTeachingTheCourse(Course& course);
 
+//    isGivenCourseCapacityFull
+//    # Function
+//      -> Returns whether the Lecturer has reached the maximum number of courses
+//      Lecturer can teach
+//    # Return
+//      - true: If the number of Courses the Lecturer can give is maximum
+//      - false: If the number of Courses the Lecturer can give is not maximum
+    bool isGivenCourseCapacityFull() const;
+
 //    printCourses
 //    # Function
 //      -> Prints all Course(s) teaching by the Lecturer
