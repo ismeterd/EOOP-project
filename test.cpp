@@ -931,33 +931,329 @@ int main()
 ////    this scenario.
 ////    ###############################################################
 
+////    ###############################################################
+////    Case 37: Becoming Lecturer of the Course
+////    (course is not active)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+//    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
+//                       "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+//
+//    school.hireLecturer(lecturer);
+//    school.hireLecturer(lecturer2);
+//    school.addCourse(course, lecturer);
+//    school.removeCourse(course);
+//
+//    bool test37 = lecturer2.becomeLecturerOfCourse(course);
+////    test37 -> false (expected)
+//    if (!test37)
+////        printCourses print course(s) given by lecturer2
+//        lecturer2.printCourses();
+//
+////    Expected Result: The becomeLecturerOfCourse method cannot
+////    function because the course is no longer offered by the
+////    school (it may never have been offered). It returns false and
+////    nothing is printed to the screen in this scenario.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 38: Adding a Student to the Course by the School
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.hireLecturer(lecturer);
+//    school.registerStudent(student);
+//    school.addCourse(course, lecturer);
+//
+//    bool test38 = school.addStudentToCourse(student, course);
+////    test38 -> true (expected)
+//    if (test38)
+////        printCourses print course(s) taken by the student
+//        student.printCourses();
+//
+////    Expected Result: The addStudentToCourse method enrolls the
+////    student in the course. It establishes the connections between
+////    the students and the student becomes a student of that course.
+////    Returns true and the course taken by the student is printed on
+////    the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 39: Adding a Student to the Course by the School
+////    (the student is not registered)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.hireLecturer(lecturer);
+//    school.addCourse(course, lecturer);
+//
+//    bool test39 = school.addStudentToCourse(student, course);
+////    test39 -> false (expected)
+//    if (!test39)
+////        printCourses print course(s) taken by the student
+//        student.printCourses();
+//
+////    Expected Result: addStudentToCourse cannot perform its
+////    function because the student to be enrolled in the course
+////    is not registered at the school. It returns false and the
+////    course cannot be printed to the screen in this scenario.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 40: Adding a Student to the Course by the School
+////    (the course at full capacity)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237550");
+//    Student student1("Emily Johnson", "040237501");
+//    Student student2("Michael Brown", "040237502");
+//    Student student3("Emma Williams", "040237503");
+//    Student student4("Daniel Jones", "040237504");
+//    Student student5("Sophia Davis", "040237505");
+//    Student student6("Matthew Wilson", "040237506");
+//    Student student7("Olivia Taylor", "040237507");
+//    Student student8("James Martinez", "040237508");
+//    Student student9("Isabella Lopez", "040237509");
+//    Student student10("William Anderson", "040237510");
+//
+//    school.hireLecturer(lecturer);
+//    school.registerStudent(student);
+//    school.registerStudent(student1);
+//    school.registerStudent(student2);
+//    school.registerStudent(student3);
+//    school.registerStudent(student4);
+//    school.registerStudent(student5);
+//    school.registerStudent(student6);
+//    school.registerStudent(student7);
+//    school.registerStudent(student8);
+//    school.registerStudent(student9);
+//    school.registerStudent(student10);
+//    school.addCourse(course, lecturer);
+//
+//    bool test40 = school.addStudentToCourse(student, course);
+////    test40 -> false (expected)
+//    if (!test40)
+////        printCourses print course(s) taken by the student
+//        student.printCourses();
+//
+////    Expected Result: addStudentToCourse cannot function because
+////    10 students are currently enrolled in the course, indicating
+////    that the course has reached maximum capacity. As a result,
+////    student("Peter Parker") cannot register for the course. It
+////    returns false and the course cannot be printed to the screen
+////    in this scenario.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 41: Adding a Student to the Course by the School
+////    (the student is already enrolled the course)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.hireLecturer(lecturer);
+//    school.registerStudent(student);
+//    school.addCourse(course, lecturer);
+//    school.addStudentToCourse(student, course);
+//
+//    bool test41 = school.addStudentToCourse(student, course);
+////    test41 -> false (expected)
+//    if (!test41)
+////        printCourses print course(s) taken by the student
+//        student.printCourses();
+//
+////    Expected Result: addStudentToCourse cannot perform its
+////    function because the student to be enrolled in the course
+////    is already registered in the course. It returns false and
+////    in this scenario, the course taken by the student is printed
+////    on the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 42: Adding a Student to the Course by the School
+////    (course is not active))
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.hireLecturer(lecturer);
+//    school.registerStudent(student);
+//    school.addCourse(course, lecturer);
+//    school.removeCourse(course);
+//
+//    bool test42 = school.addStudentToCourse(student, course);
+////    test42 -> false (expected)
+//    if (!test42)
+////        printCourses print course(s) taken by the student
+//        student.printCourses();
+//
+////    Expected Result: addStudentToCourse cannot perform its
+////    function because the relevant course may not have been
+////    opened by the school, may have been closed, or may not
+////    have a Lecturer. It returns false and nothing is printed to
+////    this screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 43: Removing the Student from the Course by the School
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.hireLecturer(lecturer);
+//    school.registerStudent(student);
+//    school.addCourse(course, lecturer);
+//    school.addStudentToCourse(student, course);
+//
+//    bool test43 = school.removeStudentFromCourse(student, course);
+////    test43 -> true (expected)
+//    if (test43)
+////        printCourses print course(s) taken by the student
+//        student.printCourses();
+//
+////    Expected Result: The removeStudentFromCourse method performs
+////    its function and deletes the student who has previously
+////    registered for the course from the course. It returns true
+////    and no courses are printed because the student is no longer
+////    enrolled in any courses in this scenario.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 44: Removing the Student from the Course by the School
+////    (the student is not registered)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.hireLecturer(lecturer);
+//    school.registerStudent(student);
+//    school.addCourse(course, lecturer);
+//    school.addStudentToCourse(student, course);
+//    school.unregisterStudent(student);
+//
+//    bool test44 = school.removeStudentFromCourse(student, course);
+////    test44 -> false (expected)
+//    if (!test44)
+////        printCourses print course(s) taken by the student
+//        student.printCourses();
+//
+////    Expected Result: It cannot perform the removeStudentFromCourse
+////    function because the student whose registration is requested
+////    to be deleted from the course is not currently registered at
+////    the school, or may have never been registered. It returns
+////    False and no courses are printed to the screen.
+////    ###############################################################
+
+////    ###############################################################
+////    Case 45: Removing the Student from the Course by the School
+////    (the student is already unEnrolled the course)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.hireLecturer(lecturer);
+//    school.registerStudent(student);
+//    school.addCourse(course, lecturer);
+//    school.addStudentToCourse(student, course);
+//    school.removeStudentFromCourse(student, course);
+//
+//    bool test45 = school.removeStudentFromCourse(student, course);
+////    test45 -> false (expected)
+//    if (!test45)
+////        printCourses print course(s) taken by the student
+//        student.printCourses();
+//
+////    Expected Result: It cannot perform the removeStudentFromCourse
+////    function because the student whose enrollment is requested to
+////    be deleted from the course has already been enEnrolled from
+////    the course or may not have been enrolled in the course at all.
+////    It returns False and no courses are printed to the screen.
+////    ###############################################################
+
 //    ###############################################################
-//    Case 37: Becoming Lecturer of the Course
-//    (course is not active)
+//    Case 46: Removing the Student from the Course by the School
+//    (the course is not active)
 //    ---------------------------------------------------------------
 //    create new School object
     School school("Warsaw University of Technology");
 //    create new Lecturer object
     Lecturer lecturer("Tony Stark", "Docent", "Electronics");
-    Lecturer lecturer2("Tolga Ozuygur", "Research Assistant",
-                       "Electronics");
 //    create new Course object
     Course course("Introduction to Building Iron Man", "IBIM", 4);
+//    create new Student object
+    Student student("Peter Parker", "040237508");
 
     school.hireLecturer(lecturer);
-    school.hireLecturer(lecturer2);
+    school.registerStudent(student);
     school.addCourse(course, lecturer);
+    school.addStudentToCourse(student, course);
     school.removeCourse(course);
 
-    bool test37 = lecturer2.becomeLecturerOfCourse(course);
-//    test37 -> false (expected)
-    if (!test37)
-//        printCourses print course(s) given by lecturer2
-        lecturer2.printCourses();
+    bool test46 = school.removeStudentFromCourse(student, course);
+//    test46 -> false (expected)
+    if (!test46)
+//        printCourses print course(s) taken by the student
+        student.printCourses();
 
-//    Expected Result: The becomeLecturerOfCourse method cannot
-//    function because the course is no longer offered by the
-//    school (it may never have been offered). It returns false and
-//    nothing is printed to the screen in this scenario.
+//    Expected Result: t cannot perform the removeStudentFromCourse
+//    function because the course for which the student's
+//    enrollment is requested has been closed by the school or
+//    may not have been opened at all. It returns false and no
+//    courses are written to the screen in this scenario.
 //    ###############################################################
 }

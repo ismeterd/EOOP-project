@@ -29,8 +29,8 @@ int main()
     school.registerStudent(student2);
     school.registerStudent(student3);
 
-    school.insertLecturer(lecturer1);
-    school.insertLecturer(lecturer2);
+    school.hireLecturer(lecturer1);
+    school.hireLecturer(lecturer2);
 
     school.addCourse(course1, lecturer1);
     school.addCourse(course2, lecturer1);

@@ -78,6 +78,11 @@ public:
 //          -> The Student may not be taking this Course...
     bool unEnrollCourse(Course& course);
 
+//    printCourses
+//    # Function
+//      -> Prints all Course(s) taken by the Student
+    void printCourses() const;
+
 //    Getter functions for private data members
     std::string getName() const;
     std::string getStudentNumber() const;
