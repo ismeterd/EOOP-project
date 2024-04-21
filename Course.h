@@ -127,11 +127,16 @@ public:
 //      - true: If the Course is at full capacity
 //      - false: If the Course is not at full capacity
     bool isCourseCapacityFull() const;
+//    printStudents
+//    # Function
+//      -> Prints all Student(s) enrolled in the Course
+    void printStudents() const;
 
 //    Getter functions for private data members
     std::string getName() const;
     std::string getNameOfTheCourseLecturer() const;
     int getNumberOfStudentsTakingCourse() const;
+    int getNumberOfCredits() const;
     bool getCourseStatus() const;
 private:
 //    name: Corresponds to the name of the Course (e.g. Object-Oriented Programming)
