@@ -11,5 +11,4 @@ add_executable(eoop_project main.cpp
         Course.cpp
         Course.h
         Student.cpp
-        Student.h
-        test.cpp)
+        Student.h)

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Lecturer::Lecturer(const string &name)
+Lecturer::Lecturer(const string &name, const string &title, const string &branch)
     : name(name), jobStatus(false),
       headOfCoursesGivenByLecturer(nullptr), numberOfCoursesGivenByLecturer(0)
 {
@@ -24,7 +24,7 @@ Lecturer::~Lecturer()
     }
 }
 
-void Lecturer::becomeLecturerOfCourse(Course &course)
+bool Lecturer::becomeLecturerOfCourse(Course &course)
 {
     courseElement* newCourse = new courseElement;
     newCourse->data = &course;

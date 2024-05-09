@@ -8,9 +8,9 @@
 
 using namespace std;
 
-Course::Course(const std::string& name, const std::string& code, int numberOfCredits)
+Course::Course(const string& name, const string& code, int numberOfCredits)
     : name(name),code(code), numberOfCredits(numberOfCredits),
-    courseLecturer(nullptr),
+    courseLecturer(nullptr), courseStatus(false),
     headOfStudentsTakingCourse(nullptr), numberOfStudentsTakingCourse(0)
 {}
 
@@ -25,12 +25,12 @@ Course::~Course()
     }
 }
 
-void Course::assignLecturer(Lecturer &lecturer)
+bool Course::assignLecturer(Lecturer &lecturer)
 {
     courseLecturer = &lecturer;
 }
 
-void Course::addStudent(Student &student)
+bool Course::addStudent(Student &student)
 {
     studentElement* newStudent = new studentElement;
     newStudent->data = &student;

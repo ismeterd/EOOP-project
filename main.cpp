@@ -13,17 +13,17 @@ int main()
 {
     School school("Warsaw University of Technology");
 
-    Student student1("Ismet Erdogan");
-    Student student2("Ahmet Citak");
-    Student student3("Mahmut Enes Oztopal");
+    Student student1("Ismet Erdogan", "040200522");
+    Student student2("Ahmet Citak", "040200523");
+    Student student3("Mahmut Enes Oztopal", "040200524");
 
-    Course course1("EOOP");
-    Course course2("EELE");
-    Course course3("ESISM");
-    Course course4("ECULT");
+    Course course1("Object-Oriented Programming" ,"EOOP", 3);
+    Course course2("Electronics", "EELE", 4);
+    Course course3("Signals, Systems and Modulations","ESISM", 4);
+    Course course4("Culture & Tradition" ,"ECULT", 2);
 
-    Lecturer lecturer1("Roman Podraza");
-    Lecturer lecturer2("Hakan Temeltas");
+    Lecturer lecturer1("Roman Podraza", "Docent", "Computer Science");
+    Lecturer lecturer2("Hakan Temeltas", "Professor", "Robotics");
 
     school.registerStudent(student1);
     school.registerStudent(student2);

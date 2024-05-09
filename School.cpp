@@ -43,7 +43,7 @@ School::~School()
     }
 }
 
-void School::hireLecturer(Lecturer &lecturer)
+bool School::hireLecturer(Lecturer &lecturer)
 {
     lecturerElement* newLecturer = new lecturerElement;
     newLecturer->data = &lecturer;
@@ -52,10 +52,10 @@ void School::hireLecturer(Lecturer &lecturer)
     numberOfLecturers++;
 }
 
-void School::addCourse(Course& course, Lecturer& courseLecturer)
+bool School::addCourse(Course& course, Lecturer& courseLecturer)
 {
     course.assignLecturer(courseLecturer);
-    courseLecturer.assignCourse(course);
+    courseLecturer.becomeLecturerOfCourse(course);
 
     courseElement* newCourse = new courseElement;
     newCourse->data = &course;
@@ -64,7 +64,7 @@ void School::addCourse(Course& course, Lecturer& courseLecturer)
     numberOfCourses++;
 }
 
-void School::registerStudent(Student &student)
+bool School::registerStudent(Student &student)
 {
     studentElement* newStudent = new studentElement;
     newStudent->data = &student;
@@ -73,9 +73,9 @@ void School::registerStudent(Student &student)
     numberOfStudents++;
 }
 
-void School::addStudentToCourse(Student &student, Course &course)
+bool School::addStudentToCourse(Student &student, Course &course)
 {
-    student.addCourse(course);
+    student.enrollCourse(course);
     course.addStudent(student);
 }
 
