@@ -3,6 +3,8 @@
 #ifndef COURSE_H
 #define COURSE_H
 
+#define MAX_STUDENT_CAPACITY 10
+
 // forward declarations
 class Lecturer;
 class Student;
@@ -103,6 +105,10 @@ public:
 //          -> The student may not be currently taking this course...
     bool removeStudent(Student& student);
 
+    bool addStudentToStudentsTakingCourseList(Student& student);
+    bool removeStudentFromStudentsTakingCourseList(Student& student);
+    bool activateCourseStatus();
+    bool deactivateCourseStatus();
 //    changeNumberOfCredits
 //    # Parameters
 //      - newNumberOfCredits: new number of credits of the course
@@ -134,7 +140,9 @@ public:
 
 //    Getter functions for private data members
     std::string getName() const;
+    std::string getCode() const;
     std::string getNameOfTheCourseLecturer() const;
+    Lecturer* getCourseLecturer() const;
     int getNumberOfStudentsTakingCourse() const;
     int getNumberOfCredits() const;
     bool getCourseStatus() const;

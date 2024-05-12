@@ -78,6 +78,11 @@ public:
 //          -> The Student may not be taking this Course...
     bool unEnrollCourse(Course& course);
 
+    bool addCourseToEnrolledCourseList(Course& course);
+    bool removeCourseFromEnrolledCourseList(Course& course);
+    bool setRegisteredSchool(School* addressOfSchool);
+    bool activateStudentStatus();
+    bool deactivateStudentStatus();
 //    printCourses
 //    # Function
 //      -> Prints all Course(s) taken by the Student
@@ -86,7 +91,7 @@ public:
 //    Getter functions for private data members
     std::string getName() const;
     std::string getStudentNumber() const;
-    int getTotalCreditsOfCoursesTaken() const;
+    int getTotalCreditsOfCoursesTaken();
     bool getCurrentActivityStatus() const;
 private:
 //    name: Corresponds to the name of the Student (e.g. Rudolf Kalman)
@@ -100,6 +105,9 @@ private:
 //      - true: Student is registered in School.
 //      - false: Student is not registered in School.
     bool activeStudent;
+
+//    registeredSchool: Points to the School which student is registered, otherwise it is nullptr.
+    School* registeredSchool;
 
 //    element of singly-linked list which keeps Course(s) taken by (this) Student
     struct courseElement {

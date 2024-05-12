@@ -3,6 +3,8 @@
 #ifndef LECTURER_H
 #define LECTURER_H
 
+#define MAX_NUMBER_OF_LECTURES 3
+
 // forward declaration
 class Course;
 
@@ -51,6 +53,9 @@ public:
 //      - false: If the process of quiting teaching the Course is unsuccessful
 //          -> The Lecturer may not currently be teaching this course...
     bool quitTeachingTheCourse(Course& course);
+
+    bool activateJobStatus();
+    bool deactivateJobStatus();
 
 //    isGivenCourseCapacityFull
 //    # Function
