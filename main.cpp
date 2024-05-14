@@ -449,8 +449,12 @@ int main()
     school_17.hireLecturer(lecturer2_17);
     school_17.addCourse(course_17, lecturer_17);
     cout << course_17.getNameOfTheCourseLecturer() << "\n";
+    lecturer_17.printCourses();
+    lecturer2_17.printCourses();
 
     bool test17 = course_17.updateLecturer(lecturer2_17);
+    lecturer_17.printCourses();
+    lecturer2_17.printCourses();
 //    test17 -> true (expected)
     if (test17)
 //        getNameOfTheCourseLecturer() returns name of the Lecturer

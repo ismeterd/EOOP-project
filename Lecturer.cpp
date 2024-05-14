@@ -99,6 +99,70 @@ bool Lecturer::quitTeachingTheCourse(Course &course) {
     return true;
 }
 
+bool Lecturer::addCourseFromCoursesGivenByLecturer(Course &course)
+{
+//    Check whether the Lecturer is employed by the school
+    if (!jobStatus) {
+        cout << "[WARNING]: Lecturer \"" << getName() << "\" is not employed by the school!" << endl;
+        return false;
+    }
+
+//    Check the course capacity of the Lecturer to be assigned to the course
+    if (isGivenCourseCapacityFull()) {
+        cout << "[WARNING]: Lecturer \"" << getName() << "\" has reached the maximum number of courses!" << endl;
+        return false;
+    }
+
+//    Check if the course is offered by the school
+    if (!course.getCourseStatus()) {
+        cout << "[WARNING]: Course \"" << course.getCode() << "\" is not active!" << endl;
+        return false;
+    }
+
+//    Add the course to the list of courses given by the lecturer
+    courseElement* newCourse = new courseElement;
+    newCourse->data = &course;
+    newCourse->next = headOfCoursesGivenByLecturer;
+    headOfCoursesGivenByLecturer = newCourse;
+    numberOfCoursesGivenByLecturer++;
+
+    return true;
+}
+
+bool Lecturer::removeCourseFromCoursesGivenByLecturer(Course &course)
+{
+//    Check whether the Lecturer to be assigned to the course is employed by the school
+    if (!jobStatus) {
+        cout << "[WARNING]: Lecturer \"" << getName() << "\" is not employed by the school!" << endl;
+        return false;
+    }
+
+//    Check if the course is offered by the school
+    if (!course.getCourseStatus()) {
+        cout << "[WARNING]: Course \"" << course.getCode() << "\" is not offered by the school!" << endl;
+        return false;
+    }
+
+// Check if the lecturer is currently teaching this course
+    courseElement *currentCourse, *previousCourse;
+    if (!findCourse(course, currentCourse, previousCourse)) {
+        cout << "[WARNING]: Lecturer \"" << getName() << "\" is not currently teaching this course \""
+             << course.getCode() << "\" !" << endl;
+        return false;
+    }
+
+//    Remove the course from the list of courses given by the lecturer
+    if (previousCourse) {
+        previousCourse->next = currentCourse->next;
+    } else {
+        headOfCoursesGivenByLecturer = currentCourse->next;
+    }
+    delete currentCourse;
+    numberOfCoursesGivenByLecturer--;
+
+    return true;
+}
+
 bool Lecturer::activateJobStatus()
 {
     jobStatus = true;

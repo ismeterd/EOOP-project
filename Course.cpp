@@ -91,8 +91,9 @@ bool Course::updateLecturer(Lecturer &lecturer)
         return false;
     }
 
-//    lecturer.quitTeachingTheCourse(*this);
+    courseLecturer->removeCourseFromCoursesGivenByLecturer(*this);
     courseLecturer = &lecturer;
+    courseLecturer->addCourseFromCoursesGivenByLecturer(*this);
 
     return true;
 }
