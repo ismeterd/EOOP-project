@@ -37,7 +37,7 @@ bool Student::unregisterFromSchool()
 {
 //    check if the student is already registered
     if (registeredSchool == nullptr) {
-        cout << "[WARNING]: Student (to be unregistered) is not registered!" << endl;
+        cout << "[WARNING]: Student \"" << getName() <<  "\" (to be unregistered) is not registered!" << endl;
         return false;
     }
 
@@ -51,26 +51,27 @@ bool Student::enrollCourse(Course &course)
 {
 //    Check if the student is registered in the school
     if (!getCurrentActivityStatus()) {
-        cout << "[WARNING]: The student is not registered in school!" << endl;
+        cout << "[WARNING]: The student \"" << getName() <<  "\" is not registered in school!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school (is the course active)
     if (!course.getCourseStatus()) {
-        cout << "[WARNING]: The course is not active!" << endl;
+        cout << "[WARNING]: The course \"" << course.getCode() <<  "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the course's student capacity has reached its maximum
     if (course.isCourseCapacityFull()) {
-        cout << "[WARNING]: The course is at capacity (max 10 students)!" << endl;
+        cout << "[WARNING]: The course \"" << course.getCode() <<  "\" is at capacity (max 10 students)!" << endl;
         return false;
     }
 
 //    Check if the course is already taken by the student.
     courseElement *currentCourse, *previousCourse;
     if (findCourse(course, currentCourse, previousCourse)) {
-        cout << "[WARNING]: The course is already taken by the student!" << endl;
+        cout << "[WARNING]: The course \"" << course.getCode() <<  "\" is already taken by the student \""
+            << getName() << "\" !" << endl;
         return false;
     }
 
@@ -88,20 +89,21 @@ bool Student::unEnrollCourse(Course &course)
 {
 //    Check if the student is registered in the school
     if (!getCurrentActivityStatus()) {
-        cout << "[WARNING]: The student is not registered in school!" << endl;
+        cout << "[WARNING]: The student \"" << getName() << "\" is not registered in school!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school (is the course active)
     if (!course.getCourseStatus()) {
-        cout << "[WARNING]: The course is not active!" << endl;
+        cout << "[WARNING]: The course \"" << course.getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the course is taken by the student
     courseElement *currentCourse, *previousCourse;
     if (!findCourse(course, currentCourse, previousCourse)) {
-        cout << "[WARNING]: The course is not taken by the student!" << endl;
+        cout << "[WARNING]: The course \"" << course.getCode() << "\" is not taken by the student \""
+            << getName() << "\" !" << endl;
         return false;
     }
 
@@ -156,20 +158,21 @@ bool Student::removeCourseFromEnrolledCourseList(Course &course)
 {
 //    Check if the student is registered in the school
     if (!getCurrentActivityStatus()) {
-        cout << "[WARNING]: The student is not registered in school!" << endl;
+        cout << "[WARNING]: The student \"" << getName() << "\" is not registered in school!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school (is the course active)
     if (!course.getCourseStatus()) {
-        cout << "[WARNING]: The course is not active!" << endl;
+        cout << "[WARNING]: The course \"" << course.getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the course is taken by the student
     courseElement *currentCourse, *previousCourse;
     if (!findCourse(course, currentCourse, previousCourse)) {
-        cout << "[WARNING]: The course is not taken by the student!" << endl;
+        cout << "[WARNING]: The course \"" << course.getCode() << "\" is not taken by the student \""
+            << getName() << "\" !" << endl;
         return false;
     }
 
@@ -213,7 +216,7 @@ bool Student::deactivateStudentStatus()
 
 void Student::printCourses() const
 {
-    cout << "#Courses Taken by the " << name << endl;
+    cout << "#Courses Taken by the " << getName() << endl;
 
     Student::courseElement* coursePtr = headOfCoursesTakenByStudent;
     while (coursePtr)
@@ -258,6 +261,7 @@ ostream& operator<<(ostream& output, Student& student)
         output << "-";
     }
     output << endl;
+    output << "Student Number: " << student.getStudentNumber() << endl;
 
     output << "#Courses Taken by the " << student.name << endl;
 

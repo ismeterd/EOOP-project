@@ -28,28 +28,29 @@ bool Lecturer::becomeLecturerOfCourse(Course &course)
 {
 //    Check whether the Lecturer is employed by the school
     if (!jobStatus) {
-        cout << "[WARNING]: Lecturer is not employed by the school!" << endl;
+        cout << "[WARNING]: Lecturer \"" << getName() << "\" is not employed by the school!" << endl;
         return false;
     }
 
 //    Check the course capacity of the Lecturer to be assigned to the course
     if (isGivenCourseCapacityFull()) {
-        cout << "[WARNING]: Lecturer has reached the maximum number of courses!" << endl;
+        cout << "[WARNING]: Lecturer \"" << getName() << "\" has reached the maximum number of courses!" << endl;
         return false;
     }
 
 // Check if the course currently has a courseLecturer
     if (course.isThereACourseLecturer()) {
-        cout << "[WARNING]: Course already has a courseLecturer!" << endl;
+        cout << "[WARNING]: Course \"" << course.getCode() << "\" already has a courseLecturer!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school
     if (!course.getCourseStatus()) {
-        cout << "[WARNING]: Course is not active!" << endl;
+        cout << "[WARNING]: Course \"" << course.getCode() << "\" is not active!" << endl;
         return false;
     }
 
+//    establish connection between course and lecturer
     course.assignLecturer(*this);
 
 //    Add the course to the list of courses given by the lecturer
@@ -65,24 +66,25 @@ bool Lecturer::becomeLecturerOfCourse(Course &course)
 bool Lecturer::quitTeachingTheCourse(Course &course) {
 //    Check whether the Lecturer to be assigned to the course is employed by the school
     if (!jobStatus) {
-        cout << "[WARNING]: Lecturer is not employed by the school!" << endl;
+        cout << "[WARNING]: Lecturer \"" << getName() << "\" is not employed by the school!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school
     if (!course.getCourseStatus()) {
-        cout << "[WARNING]: Course is not offered by the school!" << endl;
+        cout << "[WARNING]: Course \"" << course.getCode() << "\" is not offered by the school!" << endl;
         return false;
     }
 
 // Check if the lecturer is currently teaching this course
     courseElement *currentCourse, *previousCourse;
     if (!findCourse(course, currentCourse, previousCourse)) {
-        cout << "[WARNING]: Lecturer is not currently teaching this course!" << endl;
+        cout << "[WARNING]: Lecturer \"" << getName() << "\" is not currently teaching this course \""
+            << course.getCode() << "\" !" << endl;
         return false;
     }
 
-    // Remove the course from the list of courses given by the lecturer
+//    Remove the course from the list of courses given by the lecturer
     if (previousCourse) {
         previousCourse->next = currentCourse->next;
     } else {
@@ -141,7 +143,7 @@ bool Lecturer::isGivenCourseCapacityFull() const
 
 void Lecturer::printCourses() const
 {
-    cout << "#Courses Given by " << name << endl;
+    cout << "#Courses Given by " << getTitle() << " " << getName() << endl;
 
     Lecturer::courseElement* coursePtr = headOfCoursesGivenByLecturer;
     while (coursePtr)
@@ -178,11 +180,12 @@ bool Lecturer::getJobStatus() const
 
 ostream& operator<<(ostream& output, Lecturer& lecturer)
 {
-    output << "Lecturer: " << lecturer.name << endl;
+    output << "Lecturer: " << lecturer.getTitle() << " " << lecturer.getName() << endl;
     for (int i = 0; i < lecturer.name.size() + 10; ++i) {
         output << "-";
     }
     output << endl;
+    output << "Branch: " << lecturer.getBranch() << endl;
 
     output << "#Courses Given by " << lecturer.name << endl;
 

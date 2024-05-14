@@ -35,30 +35,32 @@ bool Course::assignLecturer(Lecturer &lecturer)
 {
 //    Check if the course is offered by the school
     if (!getCourseStatus()) {
-        cout << "[WARNING]: Course is not active!" << endl;
+        cout << "[WARNING]: Course \"" << getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the course currently has not a courseLecturer
     if (isThereACourseLecturer()) {
-        cout << "[WARNING]: Course has a courseLecturer currently!" << endl;
+        cout << "[WARNING]: Course \"" << getCode() << "\" has a courseLecturer currently!" << endl;
         return false;
     }
 
 //    Check whether the Lecturer to be assigned to the course is employed by the school
     if (!lecturer.getJobStatus()) {
-        cout << "[WARNING]: Lecturer is not hired!" << endl;
+        cout << "[WARNING]: Lecturer \"" << lecturer.getName() << "\" is not hired by school!" << endl;
         return false;
     }
 
 //    Check the course capacity of the teacher to be assigned to the course
     if (lecturer.isGivenCourseCapacityFull()) {
-        cout << "[WARNING]: Lecturer has reached the maximum lecture capacity!" << endl;
+        cout << "[WARNING]: Lecturer \"" << lecturer.getName()
+            << "\" has reached the maximum lecture capacity!" << endl;
         return false;
     }
 
 //    lecturer.becomeLecturerOfCourse();
     courseLecturer = &lecturer;
+
     return true;
 }
 
@@ -66,30 +68,32 @@ bool Course::updateLecturer(Lecturer &lecturer)
 {
 //    Check if the course is offered by the school
     if (!getCourseStatus()) {
-        cout << "[WARNING]: Course is not active!" << endl;
+        cout << "[WARNING]: Course \"" << getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the course currently has a courseLecturer
     if (!isThereACourseLecturer()) {
-        cout << "[WARNING]: Course has not a courseLecturer currently!" << endl;
+        cout << "[WARNING]: Course \"" << getCode() << "\" has not a courseLecturer currently!" << endl;
         return false;
     }
 
 //    Check whether the Lecturer to be assigned to the course is employed by the school
     if (!lecturer.getJobStatus()) {
-        cout << "[WARNING]: Lecturer is not hired!" << endl;
+        cout << "[WARNING]: Lecturer \"" << lecturer.getName() << "\" is not hired!" << endl;
         return false;
     }
 
 //    Check the course capacity of the Lecturer to be assigned to the course
     if (lecturer.isGivenCourseCapacityFull()) {
-        cout << "[WARNING]: Lecturer has reached the maximum lecture capacity!" << endl;
+        cout << "[WARNING]: Lecturer \"" << lecturer.getName()
+            << "\" has reached the maximum lecture capacity!" << endl;
         return false;
     }
 
 //    lecturer.quitTeachingTheCourse(*this);
     courseLecturer = &lecturer;
+
     return true;
 }
 
@@ -97,13 +101,13 @@ bool Course::fireLecturerFromCourse()
 {
 //    Check if the course is offered by the school
     if (!getCourseStatus()) {
-        cout << "[WARNING]: Course is not active!" << endl;
+        cout << "[WARNING]: Course \"" << getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the course currently has a courseLecturer
     if (!isThereACourseLecturer()) {
-        cout << "[WARNING]: Course has not a courseLecturer currently!" << endl;
+        cout << "[WARNING]: Course \"" << getCode() << "\" has not a courseLecturer currently!" << endl;
         return false;
     }
 
@@ -114,8 +118,10 @@ bool Course::fireLecturerFromCourse()
         student->removeCourseFromEnrolledCourseList(*this);
     }
 
+//    lecturer.quitTeachingTheCourse(*this);
 // Clear the courseLecturer pointer
     courseLecturer = nullptr;
+
     return true;
 }
 
@@ -123,26 +129,27 @@ bool Course::addStudent(Student &student)
 {
 //    Check if the student is registered in the school
     if (!student.getCurrentActivityStatus()) {
-        cout << "[WARNING]: The student is not registered in school!" << endl;
+        cout << "[WARNING]: The student \"" << student.getName() << "\" is not registered in school!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school (is the course active)
     if (!courseStatus) {
-        cout << "[WARNING]: The course is not active!" << endl;
+        cout << "[WARNING]: The course \"" << getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the course's student capacity has reached its maximum
     if (isCourseCapacityFull()) {
-        cout << "[WARNING]: The course is at capacity (max 10 students)!" << endl;
+        cout << "[WARNING]: The course \"" << getCode() << "\" is at capacity (max 10 students)!" << endl;
         return false;
     }
 
 //    Check if the student is already enrolled in the course.
     studentElement *currentStudent, *previousStudent;
     if (findStudent(student, currentStudent, previousStudent)) {
-        cout << "[WARNING]: The student is already enrolled in the course!" << endl;
+        cout << "[WARNING]: The student \"" << student.getName() << "\" is already enrolled in the course \""
+            << getCode() << "\" !" << endl;
         return false;
     }
 
@@ -160,20 +167,21 @@ bool Course::removeStudent(Student &student)
 {
 //    Check if the student is registered in the school
     if (!student.getCurrentActivityStatus()) {
-        cout << "[WARNING]: The student is not registered in school!" << endl;
+        cout << "[WARNING]: The student \"" << student.getName() << "\" is not registered in school!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school (is the course active)
     if (!courseStatus) {
-        cout << "[WARNING]: The course is not active!" << endl;
+        cout << "[WARNING]: The course \"" << getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the student is not enrolled in the course.
     studentElement *currentStudent, *previousStudent;
     if (!findStudent(student, currentStudent, previousStudent)) {
-        cout << "[WARNING]: The student is not enrolled in the course!" << endl;
+        cout << "[WARNING]: The student \"" << student.getName() << "\" is not enrolled in the course \""
+            << getCode() << "\" !" << endl;
         return false;
     }
 
@@ -191,27 +199,27 @@ bool Course::addStudentToStudentsTakingCourseList(Student &student)
 {
 //    Check if the student is registered in the school
     if (!student.getCurrentActivityStatus()) {
-        cout << "[WARNING]: The student is not registered in school!" << endl;
+        cout << "[WARNING]: The student \"" << student.getName() << "\" is not registered in school!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school (is the course active)
     if (!courseStatus) {
-        cout << "[WARNING]: The course is not active!" << endl;
+        cout << "[WARNING]: The course \"" << getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the course's student capacity has reached its maximum
     if (isCourseCapacityFull()) {
-        cout << "[WARNING]: The course is at capacity (max 10 students)!" << endl;
-        cout << "[WARNING]: from course!" << endl;
+        cout << "[WARNING]: The course \"" << getCode() << "\" is at capacity (max 10 students)!" << endl;
         return false;
     }
 
 //    Check if the student is already enrolled in the course.
     studentElement *currentStudent, *previousStudent;
     if (findStudent(student, currentStudent, previousStudent)) {
-        cout << "[WARNING]: The student is already enrolled in the course!" << endl;
+        cout << "[WARNING]: The student \"" << student.getName() << "\" is already enrolled in the course \""
+             << getCode() << "\" !" << endl;
         return false;
     }
 
@@ -220,6 +228,7 @@ bool Course::addStudentToStudentsTakingCourseList(Student &student)
     newStudent->next = headOfStudentsTakingCourse;
     headOfStudentsTakingCourse = newStudent;
     numberOfStudentsTakingCourse++;
+
     return true;
 
 }
@@ -228,21 +237,21 @@ bool Course::removeStudentFromStudentsTakingCourseList(Student &student)
 {
 //    Check if the student is registered in the school
     if (!student.getCurrentActivityStatus()) {
-        cout << "[WARNING]: The student is not registered in school!" << endl;
+        cout << "[WARNING]: The student \"" << student.getName() << "\" is not registered in school!" << endl;
         return false;
     }
 
 //    Check if the course is offered by the school (is the course active)
     if (!courseStatus) {
-        cout << "[WARNING]: The course is not active!" << endl;
+        cout << "[WARNING]: The course \"" << getCode() << "\" is not active!" << endl;
         return false;
     }
 
 //    Check if the student is not enrolled in the course.
     studentElement *currentStudent, *previousStudent;
     if (!findStudent(student, currentStudent, previousStudent)) {
-        cout << "[WARNING]: The student is not enrolled in the course!" << endl;
-        cout << "[WARNING]: Problem!" << endl;
+        cout << "[WARNING]: The student \"" << student.getName() << "\" is not enrolled in the course \""
+             << getCode() << "\" !" << endl;
         return false;
     }
 
@@ -281,7 +290,8 @@ bool Course::deactivateCourseStatus()
 bool Course::changeNumberOfCredits(int newNumberOfCredits)
 {
     if (!(newNumberOfCredits >= 1 && newNumberOfCredits <= 4)) {
-        cout << "[WARNING]: The number of credits entered is invalid (Valid range is 1-4)." << endl;
+        cout << "[WARNING]: The number of credits entered \"" << newNumberOfCredits
+             << "\" is invalid (Valid range is 1-4)." << endl;
         return false;
     }
 
@@ -308,7 +318,7 @@ bool Course::isCourseCapacityFull() const
 
 void Course::printStudents() const
 {
-    cout << "#Students Taking This Course" << endl;
+    cout << "#Students Taking This Course \"" << getCode() << "\"" << endl;
     Course::studentElement* studentPtr = headOfStudentsTakingCourse;
     while (studentPtr)
     {
@@ -357,11 +367,12 @@ bool Course::getCourseStatus() const
 
 ostream& operator<<(ostream& output, Course& course)
 {
-    output << "Course: " << course.name << endl;
-    for (int i = 0; i < course.name.size() + 10; ++i) {
+    output << "Course: " << course.getName() << endl;
+    for (int i = 0; i < course.getName().size() + 10; ++i) {
         output << "-";
     }
     output << endl;
+    output << "Course Code: " << course.getCode() << endl;
 
     output << "#Courses Lecturer " << endl;
     output << "-> " << (course.courseLecturer)->getName() << endl;

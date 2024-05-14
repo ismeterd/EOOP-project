@@ -2000,36 +2000,36 @@ int main()
 ////    false and no students are printed to the screen.
 ////    ###############################################################
 
-//    ###############################################################
-//    Case 71: UnEnrolling to the Course by Student Object
-//    (the course is not active)
-//    ---------------------------------------------------------------
-//    create new School object
-    School school("Warsaw University of Technology");
-//    create new Lecturer object
-    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
-//    create new Course object
-    Course course("Introduction to Building Iron Man", "IBIM", 4);
-//    create new Student object
-    Student student("Peter Parker", "040237508");
-
-    school.hireLecturer(lecturer);
-    school.registerStudent(student);
-    school.addCourse(course, lecturer);
-    student.enrollCourse(course);
-    school.removeCourse(course);
-
-    bool test71 = student.unEnrollCourse(course);
-//    test71 -> true (expected)
-    if (!test71)
-//        printStudents() print student(s) enrolled in course.
-        course.printStudents();
-
-//    Expected Result: The unEnrollCourse method cannot fulfill its
-//    function because the relevant course has been removed by the
-//    school (it may not have been opened at all), that is, it is
-//    not active. It is not possible to enroll or cancel
-//    registration for an inactive course. It returns false and no
-//    students are printed to the screen.
-//    ###############################################################
+////    ###############################################################
+////    Case 71: UnEnrolling to the Course by Student Object
+////    (the course is not active)
+////    ---------------------------------------------------------------
+////    create new School object
+//    School school("Warsaw University of Technology");
+////    create new Lecturer object
+//    Lecturer lecturer("Tony Stark", "Docent", "Electronics");
+////    create new Course object
+//    Course course("Introduction to Building Iron Man", "IBIM", 4);
+////    create new Student object
+//    Student student("Peter Parker", "040237508");
+//
+//    school.hireLecturer(lecturer);
+//    school.registerStudent(student);
+//    school.addCourse(course, lecturer);
+//    student.enrollCourse(course);
+//    school.removeCourse(course);
+//
+//    bool test71 = student.unEnrollCourse(course);
+////    test71 -> true (expected)
+//    if (!test71)
+////        printStudents() print student(s) enrolled in course.
+//        course.printStudents();
+//
+////    Expected Result: The unEnrollCourse method cannot fulfill its
+////    function because the relevant course has been removed by the
+////    school (it may not have been opened at all), that is, it is
+////    not active. It is not possible to enroll or cancel
+////    registration for an inactive course. It returns false and no
+////    students are printed to the screen.
+////    ###############################################################
 }

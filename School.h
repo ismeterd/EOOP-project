@@ -55,7 +55,7 @@ public:
 //      - false: If the firing process is unsuccessful
 //          -> If there is no Lecturer corresponding to the entered name among
 //          the working Lecturers...
-    bool fireLecturerByName(const std::string &name);
+    bool fireLecturerByName(const std::string &lecturerName);
 
 //    addCourse
 //    # Parameters
@@ -217,7 +217,7 @@ private:
 //    they are useful for removing elements from the list.
     bool findLecturer(const Lecturer& lecturer, lecturerElement*& current,
                       lecturerElement*& previous) const;
-    bool findLecturerByName(const std::string &name, lecturerElement*& current,
+    bool findLecturerByName(const std::string &lecturerName, lecturerElement*& current,
                       lecturerElement*& previous) const;
     bool findCourse(const Course& course, courseElement*& current,
                     courseElement*& previous) const;

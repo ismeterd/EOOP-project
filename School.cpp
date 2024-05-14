@@ -49,7 +49,7 @@ bool School::hireLecturer(Lecturer &lecturer)
     lecturerElement *current, *previous;
     if (findLecturer(lecturer, current, previous))
     {
-        cout << "[WARNING]: Lecturer is already hired!" << endl;
+        cout << "[WARNING]: Lecturer \"" << lecturer.getName() << "\" is already hired!" << endl;
         return false;
     }
 
@@ -72,7 +72,7 @@ bool School::fireLecturer(Lecturer &lecturer)
     lecturerElement *current, *previous;
     if (!findLecturer(lecturer, current, previous))
     {
-        cout << "[WARNING]: Lecturer (to be deleted) is not hired!" << endl;
+        cout << "[WARNING]: Lecturer \"" << lecturer.getName() << "\" (to be deleted) is not hired!" << endl;
         return false;
     }
 
@@ -101,13 +101,13 @@ bool School::fireLecturer(Lecturer &lecturer)
     return true;
 }
 
-bool School::fireLecturerByName(const string &name)
+bool School::fireLecturerByName(const string &lecturerName)
 {
 // check if the lecturer is already hired
     lecturerElement *current, *previous;
-    if (!findLecturerByName(name, current, previous))
+    if (!findLecturerByName(lecturerName, current, previous))
     {
-        cout << "[WARNING]: Lecturer named " << name << " (to be deleted) is not hired!" << endl;
+        cout << "[WARNING]: Lecturer named " << lecturerName << " (to be deleted) is not hired!" << endl;
         return false;
     }
 
@@ -131,7 +131,8 @@ bool School::addCourse(Course& course, Lecturer& courseLecturer)
     lecturerElement *currentLecturer, *previousLecturer;
     if (!findLecturer(courseLecturer, currentLecturer, previousLecturer))
     {
-        cout << "[WARNING]: Lecturer (to be Course Lecturer) is not hired!" << endl;
+        cout << "[WARNING]: Lecturer \"" << courseLecturer.getName()
+            << "\" (to be Course Lecturer) is not hired!" << endl;
         return false;
     }
 
@@ -139,14 +140,14 @@ bool School::addCourse(Course& course, Lecturer& courseLecturer)
     courseElement *currentCourse, *previousCourse;
     if (findCourse(course, currentCourse, previousCourse))
     {
-        cout << "[WARNING]: Course is already exist!" << endl;
+        cout << "[WARNING]: Course \"" << course.getCode() << "\" is already exist!" << endl;
         return false;
     }
 
 //    check if there is a course with the same code
     courseElement *currentCourseWithSameCode, *previousCourseWithSameCode;
     if (findCourseByCode(course.getCode(), currentCourseWithSameCode, previousCourseWithSameCode)) {
-        cout << "[WARNING]: A course with the same code already exists!" << std::endl;
+        cout << "[WARNING]: A course with the same code \"" << course.getCode() << "\" already exists!" << endl;
         return false;
     }
 
@@ -158,7 +159,7 @@ bool School::addCourse(Course& course, Lecturer& courseLecturer)
 
 //    make Course's courseStatus true
     course.activateCourseStatus();
-
+//    establish a connection between Lecturer and Course
     courseLecturer.becomeLecturerOfCourse(course);
 
     return true;
@@ -169,7 +170,8 @@ bool School::removeCourse(Course &course)
 //    check if the course exists
     courseElement *currentCourse, *previousCourse;
     if(!findCourse(course, currentCourse, previousCourse)) {
-        cout << "[WARNING]: Course can not be removed. The course is not added by the school!" << endl;
+        cout << "[WARNING]: Course \"" << course.getCode()
+            << "\" can not be removed. The course is not added by the school!" << endl;
         return false;
     }
 
@@ -181,8 +183,8 @@ bool School::removeCourse(Course &course)
     delete currentCourse;
     numberOfCourses--;
 
+//    break the connection between Lecturer and Course
     course.getCourseLecturer()->quitTeachingTheCourse(course);
-    
 //    make Course's courseStatus false
     course.deactivateCourseStatus();
 
@@ -194,7 +196,8 @@ bool School::removeCourseByCode(const string &code)
 //    check if the course exists
     courseElement *currentCourse, *previousCourse;
     if(!findCourseByCode(code, currentCourse, previousCourse)) {
-        cout << "[WARNING]: Course can not be removed. The course is not added by the school!" << endl;
+        cout << "[WARNING]: Course \"" << code
+            << "\" can not be removed. The course is not added by the school!" << endl;
         return false;
     }
 
@@ -208,6 +211,7 @@ bool School::removeCourseByCode(const string &code)
         previousCourse->next = currentCourse->next;
     delete currentCourse;
     numberOfCourses--;
+
     return true;
 }
 
@@ -217,7 +221,7 @@ bool School::registerStudent(Student &student)
     studentElement *currentStudent, *previousStudent;
     if (findStudent(student, currentStudent, previousStudent))
     {
-        cout << "[WARNING]: Student is already registered!" << endl;
+        cout << "[WARNING]: Student \"" << student.getName() << "\" is already registered!" << endl;
         return false;
     }
 
@@ -226,7 +230,8 @@ bool School::registerStudent(Student &student)
     studentElement *currentStudentWithSameNumber, *previousStudentWithSameNumber;
     if (findStudentByStudentNumber(student.getStudentNumber(), currentStudentWithSameNumber,
                                    previousStudentWithSameNumber)) {
-        cout << "[WARNING]: A student with the same student number already exists!" << std::endl;
+        cout << "[WARNING]: A student with the same student number ("
+            << student.getStudentNumber() << ") already exists!" << std::endl;
         return false;
     }
 
@@ -250,7 +255,7 @@ bool School::unregisterStudent(Student &student)
 //    check if the student is already registered
     studentElement *currentStudent, *previousStudent;
     if ((!findStudent(student, currentStudent, previousStudent))) {
-        cout << "[WARNING]: Student (to be unregistered) is not registered!" << endl;
+        cout << "[WARNING]: Student \"" << student.getName() <<  "\" (to be unregistered) is not registered!" << endl;
         return false;
     }
 
@@ -275,7 +280,7 @@ bool School::unregisterStudentByStudentNumber(const string &studentNumber)
 //    check if the student is already registered
     studentElement *currentStudent, *previousStudent;
     if (!findStudentByStudentNumber(studentNumber, currentStudent, previousStudent)) {
-        cout << "[WARNING]: Student (to be unregistered) is not registered!" << endl;
+        cout << "[WARNING]: Student ("<< studentNumber << ") (to be unregistered) is not registered!" << endl;
         return false;
     }
 
@@ -312,19 +317,19 @@ bool School::removeStudentFromCourse(Student &student, Course &course)
 
 void School::printLecturers() const
 {
-    cout << "#Lecturers" << endl;
+    cout << "#Lecturers in " << getName() << endl;
 
     School::lecturerElement* lecturerPtr = headOfLecturers;
     while (lecturerPtr)
     {
-        cout << "-> " <<lecturerPtr->data->getName() << endl;
+        cout << "-> " << lecturerPtr->data->getTitle() << " " << lecturerPtr->data->getName() << endl;
         lecturerPtr = lecturerPtr->next;
     }
 }
 
 void School::printCourses() const
 {
-    cout << "#Courses" << endl;
+    cout << "#Given Courses in " << getName() << endl;
 
     School::courseElement* coursePtr = headOfCourses;
     while (coursePtr)
@@ -336,12 +341,12 @@ void School::printCourses() const
 
 void School::printStudents() const
 {
-    cout << "#Students" << endl;
+    cout << "#Registered Students in " << getName() << endl;
 
     School::studentElement* studentPtr = headOfStudents;
     while (studentPtr)
     {
-        cout << "-> " <<studentPtr->data->getName() << endl;
+        cout << "-> " <<studentPtr->data->getName() << " - "  << studentPtr->data->getStudentNumber() << endl;
         studentPtr = studentPtr->next;
     }
 }
@@ -379,7 +384,7 @@ ostream& operator<<(ostream& output, School& school)
     School::lecturerElement* lecturerPtr = school.headOfLecturers;
     while (lecturerPtr)
     {
-        output << "-> " <<lecturerPtr->data->getName() << endl;
+        output << "-> " << lecturerPtr->data->getTitle() << " " << lecturerPtr->data->getName() << endl;
         lecturerPtr = lecturerPtr->next;
     }
 
@@ -425,13 +430,13 @@ bool School::findLecturer(const Lecturer& lecturer, lecturerElement*& current,
     return false;
 }
 
-bool School::findLecturerByName(const std::string &name, School::lecturerElement *&current,
+bool School::findLecturerByName(const string &lecturerName, School::lecturerElement *&current,
                                 School::lecturerElement *&previous) const
 {
     previous = nullptr;
     current = headOfLecturers;
     while (current != nullptr) {
-        if (current->data->getName() == name)
+        if (current->data->getName() == lecturerName)
             return true;
         previous = current;
         current = current->next;
