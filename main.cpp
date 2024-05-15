@@ -484,7 +484,11 @@ int main()
     school_18.hireLecturer(lecturer_18);
     school_18.hireLecturer(lecturer2_18);
     school_18.addCourse(course_18, lecturer_18);
+    lecturer_18.printCourses();
+    cout << "Lecturer: " << course_18.getNameOfTheCourseLecturer() << "\n";
     course_18.fireLecturerFromCourse();
+    lecturer_18.printCourses();
+    cout << "Lecturer: " << course_18.getNameOfTheCourseLecturer() << "\n";
 
     bool test18 = course_18.updateLecturer(lecturer2_18);
 //    test18 -> false (expected)
@@ -787,6 +791,8 @@ int main()
     school_27.addCourse(course2_27, lecturer_27);
     school_27.addCourse(course3_27, lecturer_27);
     school_27.addCourse(course4_27, lecturer_27);
+    lecturer_27.printCourses();
+    lecturer2_27.printCourses();
 
     bool test27 = course_27.assignLecturer(lecturer_27);
 //    test27 -> false (expected)
@@ -820,7 +826,9 @@ int main()
     school_28.hireLecturer(lecturer_28);
     school_28.hireLecturer(lecturer2_28);
     school_28.addCourse(course_28, lecturer_28);
+    lecturer_28.printCourses();
     school_28.removeCourse(course_28);
+    lecturer_28.printCourses();
 
     bool test28 = course_28.assignLecturer(lecturer2_28);
 //    test28 -> false (expected)
@@ -1158,12 +1166,16 @@ int main()
     school_38.registerStudent(student_38);
     school_38.addCourse(course_38, lecturer_38);
     student_38.printCourses();
+    course_38.printStudents();
 
     bool test38 = school_38.addStudentToCourse(student_38, course_38);
 //    test38 -> true (expected)
     if (test38)
+    {
 //        printCourses print course(s) taken by the student
         student_38.printCourses();
+        course_38.printStudents();
+    }
 
     cout << "--------------------------------------------" << endl;
 //    Expected Result: The addStudentToCourse method enrolls the
@@ -1503,12 +1515,16 @@ int main()
     school_47.registerStudent(student_47);
     school_47.addCourse(course_47, lecturer_47);
     student_47.printCourses();
+    course_47.printStudents();
 
     bool test47 = course_47.addStudent(student_47);
 //    test47 -> true (expected)
     if (test47)
+    {
 //        printCourses print course(s) taken by the student
         student_47.printCourses();
+        course_47.printStudents();
+    }
 
     cout << "--------------------------------------------" << endl;
 //    Expected Result: The addStudent method performs its function
@@ -1700,12 +1716,16 @@ int main()
     school_52.addCourse(course_52, lecturer_52);
     course_52.addStudent(student_52);
     student_52.printCourses();
+    course_52.printStudents();
 
     bool test52 = course_52.removeStudent(student_52);
 //    test52 -> true (expected)
     if (test52)
+    {
 //        printCourses print course(s) taken by the student
         student_52.printCourses();
+        course_52.printStudents();
+    }
 
     cout << "--------------------------------------------" << endl;
 //    Expected Result: The removeStudent method performs its
@@ -1733,16 +1753,22 @@ int main()
     school_53.registerStudent(student_53);
     school_53.addCourse(course_53, lecturer_53);
     student_53.printCourses();
+    course_53.printStudents();
     course_53.addStudent(student_53);
     student_53.printCourses();
+    course_53.printStudents();
     school_53.unregisterStudent(student_53);
     student_53.printCourses();
+    course_53.printStudents();
 
     bool test53 = course_53.removeStudent(student_53);
 //    test53 -> false (expected)
     if (!test53)
+    {
 //        printCourses print course(s) taken by the student
         student_53.printCourses();
+        course_53.printStudents();
+    }
 
     cout << "--------------------------------------------" << endl;
 //    Expected Result: The removeStudent method cannot function
@@ -1773,8 +1799,10 @@ int main()
     student_54.printCourses();
     course_54.addStudent(student_54);
     student_54.printCourses();
+    course_54.printStudents();
     course_54.removeStudent(student_54);
     student_54.printCourses();
+    course_54.printStudents();
 
     bool test54 = course_54.removeStudent(student_54);
 //    test54 -> false (expected)
@@ -1809,10 +1837,13 @@ int main()
     school_55.registerStudent(student_55);
     school_55.addCourse(course_55, lecturer_55);
     student_55.printCourses();
+    course_55.printStudents();
     course_55.addStudent(student_55);
     student_55.printCourses();
+    course_55.printStudents();
     school_55.removeCourse(course_55);
     student_55.printCourses();
+    course_55.printStudents();
 
     bool test55 = course_55.removeStudent(student_55);
 //    test55 -> false (expected)
@@ -2039,12 +2070,16 @@ int main()
     school_63.registerStudent(student_63);
     school_63.addCourse(course_63, lecturer_63);
     course_63.printStudents();
+    student_63.printCourses();
 
     bool test63 = student_63.enrollCourse(course_63);
 //    test63 -> true (expected)
     if (test63)
+    {
 //        printStudents() print student(s) enrolled in course.
         course_63.printStudents();
+        student_63.printCourses();
+    }
 
     cout << "--------------------------------------------" << endl;
 //    Expected Result: The enrollCourse method performs its function
@@ -2249,8 +2284,11 @@ int main()
     bool test68 = student_68.unEnrollCourse(course_68);
 //    test68 -> true (expected)
     if (test68)
+    {
 //        printStudents() print student(s) enrolled in course.
         course_68.printStudents();
+        student_68.printCourses();
+    }
 
     cout << "--------------------------------------------" << endl;
 //    Expected Result: The unEnrollCourse method performs its
