@@ -184,7 +184,7 @@ bool School::removeCourse(Course &course)
     numberOfCourses--;
 
 //    break the connection between Lecturer and Course
-    course.getCourseLecturer()->quitTeachingTheCourse(course);
+    course.fireLecturerFromCourse();
 //    make Course's courseStatus false
     course.deactivateCourseStatus();
 
@@ -201,6 +201,8 @@ bool School::removeCourseByCode(const string &code)
         return false;
     }
 
+//    break the connection between Lecturer and Course
+    currentCourse->data->fireLecturerFromCourse();
 //    make Course's courseStatus false
     currentCourse->data->deactivateCourseStatus();
 

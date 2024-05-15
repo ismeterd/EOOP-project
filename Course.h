@@ -105,6 +105,8 @@ public:
 //          -> The student may not be currently taking this course...
     bool removeStudent(Student& student);
 
+    bool setCourseLecturerAsNull();
+    bool removeAllStudents();
     bool addStudentToStudentsTakingCourseList(Student& student);
     bool removeStudentFromStudentsTakingCourseList(Student& student);
     bool activateCourseStatus();

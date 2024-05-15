@@ -53,13 +53,6 @@ bool Lecturer::becomeLecturerOfCourse(Course &course)
 //    establish connection between course and lecturer
     course.assignLecturer(*this);
 
-//    Add the course to the list of courses given by the lecturer
-    courseElement* newCourse = new courseElement;
-    newCourse->data = &course;
-    newCourse->next = headOfCoursesGivenByLecturer;
-    headOfCoursesGivenByLecturer = newCourse;
-    numberOfCoursesGivenByLecturer++;
-
     return true;
 }
 
@@ -94,12 +87,13 @@ bool Lecturer::quitTeachingTheCourse(Course &course) {
     numberOfCoursesGivenByLecturer--;
 
 //    Update the course to remove the lecturer as its course instructor
-    course.fireLecturerFromCourse();
+    course.removeAllStudents();
+    course.setCourseLecturerAsNull();
 
     return true;
 }
 
-bool Lecturer::addCourseFromCoursesGivenByLecturer(Course &course)
+bool Lecturer::addCourseToCoursesGivenByLecturer(Course &course)
 {
 //    Check whether the Lecturer is employed by the school
     if (!jobStatus) {
@@ -157,6 +151,7 @@ bool Lecturer::removeCourseFromCoursesGivenByLecturer(Course &course)
     } else {
         headOfCoursesGivenByLecturer = currentCourse->next;
     }
+
     delete currentCourse;
     numberOfCoursesGivenByLecturer--;
 
@@ -174,9 +169,10 @@ bool Lecturer::deactivateJobStatus()
 //    Withdraw (quit) from all courses he/she teaches.
     courseElement* currentCourse = headOfCoursesGivenByLecturer;
     while (currentCourse) {
-        Course* course = currentCourse->data;
-        course->fireLecturerFromCourse(); // Remove the lecturer from the course
+        Course* temp = currentCourse->data;
         currentCourse = currentCourse->next;
+//        remove the lecturer from the course
+        temp->fireLecturerFromCourse();
     }
 
 //    Delete all courses in the list that consists courses given by lecturer

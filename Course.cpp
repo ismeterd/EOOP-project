@@ -58,8 +58,9 @@ bool Course::assignLecturer(Lecturer &lecturer)
         return false;
     }
 
-//    lecturer.becomeLecturerOfCourse();
+//    establish connection between lecturer and course
     courseLecturer = &lecturer;
+    courseLecturer->addCourseToCoursesGivenByLecturer(*this);
 
     return true;
 }
@@ -93,7 +94,7 @@ bool Course::updateLecturer(Lecturer &lecturer)
 
     courseLecturer->removeCourseFromCoursesGivenByLecturer(*this);
     courseLecturer = &lecturer;
-    courseLecturer->addCourseFromCoursesGivenByLecturer(*this);
+    courseLecturer->addCourseToCoursesGivenByLecturer(*this);
 
     return true;
 }
@@ -112,15 +113,10 @@ bool Course::fireLecturerFromCourse()
         return false;
     }
 
-//    remove all students from the list of Students who takes this course
-    while (headOfStudentsTakingCourse != nullptr) {
-        Student* student = headOfStudentsTakingCourse->data;
-        removeStudentFromStudentsTakingCourseList(*student);
-        student->removeCourseFromEnrolledCourseList(*this);
-    }
+    removeAllStudents();
 
-//    lecturer.quitTeachingTheCourse(*this);
-// Clear the courseLecturer pointer
+//    break connection between course and lecturer
+    courseLecturer->removeCourseFromCoursesGivenByLecturer(*this);
     courseLecturer = nullptr;
 
     return true;
@@ -194,6 +190,23 @@ bool Course::removeStudent(Student &student)
     }
     else
         return false;
+}
+
+bool Course::setCourseLecturerAsNull()
+{
+    courseLecturer = nullptr;
+    return true;
+}
+
+bool Course::removeAllStudents()
+{
+//    remove all students from the list of Students who takes this course
+    while (headOfStudentsTakingCourse != nullptr) {
+        Student* student = headOfStudentsTakingCourse->data;
+        removeStudentFromStudentsTakingCourseList(*student);
+        student->removeCourseFromEnrolledCourseList(*this);
+    }
+    return true;
 }
 
 bool Course::addStudentToStudentsTakingCourseList(Student &student)
@@ -278,11 +291,7 @@ bool Course::activateCourseStatus()
 bool Course::deactivateCourseStatus()
 {
 //    Remove all students from the course
-    while (headOfStudentsTakingCourse != nullptr) {
-        Student* student = headOfStudentsTakingCourse->data;
-        removeStudentFromStudentsTakingCourseList(*student);
-        student->removeCourseFromEnrolledCourseList(*this);
-    }
+    removeAllStudents();
 
     courseStatus = false;
     return true;
