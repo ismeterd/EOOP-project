@@ -58,7 +58,6 @@ public:
     bool removeCourseFromCoursesGivenByLecturer(Course& course);
     bool activateJobStatus();
     bool deactivateJobStatus();
-
 //    isGivenCourseCapacityFull
 //    # Function
 //      -> Returns whether the Lecturer has reached the maximum number of courses

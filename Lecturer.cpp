@@ -195,7 +195,7 @@ bool Lecturer::deactivateJobStatus()
 
 bool Lecturer::isGivenCourseCapacityFull() const
 {
-    if (numberOfCoursesGivenByLecturer == MAX_NUMBER_OF_LECTURES)
+    if (getNumberOfCoursesGivenByLecturer() == MAX_NUMBER_OF_LECTURES)
         return true;
     else
         return false;

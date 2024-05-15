@@ -111,7 +111,6 @@ public:
     bool removeStudentFromStudentsTakingCourseList(Student& student);
     bool activateCourseStatus();
     bool deactivateCourseStatus();
-    
 //    changeNumberOfCredits
 //    # Parameters
 //      - newNumberOfCredits: new number of credits of the course
