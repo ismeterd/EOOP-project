@@ -54,7 +54,7 @@ public:
 //          -> The Lecturer may not currently be teaching this course...
     bool quitTeachingTheCourse(Course& course);
 
-    bool addCourseFromCoursesGivenByLecturer(Course& course);
+    bool addCourseToCoursesGivenByLecturer(Course& course);
     bool removeCourseFromCoursesGivenByLecturer(Course& course);
     bool activateJobStatus();
     bool deactivateJobStatus();
