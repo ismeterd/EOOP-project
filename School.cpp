@@ -1,4 +1,4 @@
-// School.cpp
+// School.cpp (School Class Implementation)
 
 #include <iostream>
 
@@ -18,6 +18,7 @@ School::School(const string &name)
 
 School::~School()
 {
+//    delete all elements of the List of Hired Lecturers
     lecturerElement* currentLecturer = headOfLecturers;
     while (currentLecturer)
     {
@@ -26,6 +27,7 @@ School::~School()
         delete temp;
     }
 
+//    delete all elements of the List of Courses Given by the School
     courseElement* coursePtr = headOfCourses;
     while (coursePtr)
     {
@@ -34,6 +36,7 @@ School::~School()
         delete temp;
     }
 
+//    delete all elements of the List of Registered Students
     studentElement* studentPtr = headOfStudents;
     while (studentPtr)
     {
@@ -45,7 +48,7 @@ School::~School()
 
 bool School::hireLecturer(Lecturer &lecturer)
 {
-    // check if the lecturer is already hired
+//    check if the lecturer is already hired
     lecturerElement *current, *previous;
     if (findLecturer(lecturer, current, previous))
     {
@@ -103,7 +106,7 @@ bool School::fireLecturer(Lecturer &lecturer)
 
 bool School::fireLecturerByName(const string &lecturerName)
 {
-// check if the lecturer is already hired
+//    check if the lecturer is already hired
     lecturerElement *current, *previous;
     if (!findLecturerByName(lecturerName, current, previous))
     {
@@ -113,6 +116,18 @@ bool School::fireLecturerByName(const string &lecturerName)
 
 //    make Lecturer's jobStatus false
     current->data->deactivateJobStatus();
+
+//    Update the course to remove the lecturer as its course instructor
+//    for all course, course.fireLecturerFromCourse();
+//    complete
+    courseElement *coursePtr = headOfCourses;
+    while (coursePtr != nullptr) {
+        if (coursePtr->data->getCourseLecturer() == current->data) {
+            if (!(coursePtr->data->fireLecturerFromCourse()))
+                return false;
+        }
+        coursePtr = coursePtr->next;
+    }
 
     // remove the lecturer from the list of hired lecturers
     if (current == headOfLecturers)
@@ -151,6 +166,7 @@ bool School::addCourse(Course& course, Lecturer& courseLecturer)
         return false;
     }
 
+//    add new Course
     courseElement* newCourse = new courseElement;
     newCourse->data = &course;
     newCourse->next = headOfCourses;

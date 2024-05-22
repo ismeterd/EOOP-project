@@ -1,4 +1,4 @@
-// Lecturer.cpp
+// Lecturer.cpp (Lecturer Class Implementation)
 
 #include <iostream>
 
@@ -15,6 +15,7 @@ Lecturer::Lecturer(const string &name, const string &title, const string &branch
 
 Lecturer::~Lecturer()
 {
+//    delete all elements of the list of Courses Given by Lecturer
     courseElement* coursePtr = headOfCoursesGivenByLecturer;
     while (coursePtr)
     {
@@ -86,8 +87,9 @@ bool Lecturer::quitTeachingTheCourse(Course &course) {
     delete currentCourse;
     numberOfCoursesGivenByLecturer--;
 
-//    Update the course to remove the lecturer as its course instructor
+//    unEnroll all students who take this Course, because there is no Course Lecturer anymore
     course.removeAllStudents();
+//    Update the course to remove the lecturer as its course instructor (break Course-Lecturer Connection)
     course.setCourseLecturerAsNull();
 
     return true;
@@ -137,7 +139,7 @@ bool Lecturer::removeCourseFromCoursesGivenByLecturer(Course &course)
         return false;
     }
 
-// Check if the lecturer is currently teaching this course
+//    Check if the lecturer is currently teaching this course
     courseElement *currentCourse, *previousCourse;
     if (!findCourse(course, currentCourse, previousCourse)) {
         cout << "[WARNING]: Lecturer \"" << getName() << "\" is not currently teaching this course \""
@@ -188,8 +190,9 @@ bool Lecturer::deactivateJobStatus()
     numberOfCoursesGivenByLecturer = 0;
 //    Clear the headOfCoursesGivenByLecturer pointer
     headOfCoursesGivenByLecturer = nullptr;
-
+//    Update the Job Status
     jobStatus = false;
+
     return true;
 }
 

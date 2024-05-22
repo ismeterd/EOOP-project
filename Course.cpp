@@ -1,4 +1,4 @@
-// Course.cpp
+// Course.cpp (Course Class Implementation)
 
 #include <iostream>
 
@@ -13,6 +13,7 @@ Course::Course(const string& name, const string& code, int numberOfCredits)
     courseLecturer(nullptr), courseStatus(false),
     headOfStudentsTakingCourse(nullptr), numberOfStudentsTakingCourse(0)
 {
+//    check if the number of credits is valid
     if (!(numberOfCredits >= 1 && numberOfCredits <= 4)) {
         numberOfCredits = 1;
         cout << "[WARNING]: The number of credits entered is invalid (Valid range is 1-4)." << endl;
@@ -22,6 +23,7 @@ Course::Course(const string& name, const string& code, int numberOfCredits)
 
 Course::~Course()
 {
+//    delete all elements of the list of Students Taking This Course
     studentElement* studentPtr = headOfStudentsTakingCourse;
     while (studentPtr)
     {
@@ -92,6 +94,7 @@ bool Course::updateLecturer(Lecturer &lecturer)
         return false;
     }
 
+//    break old Course-Lecturer Connection and establish new connection between Lecturer and Course
     courseLecturer->removeCourseFromCoursesGivenByLecturer(*this);
     courseLecturer = &lecturer;
     courseLecturer->addCourseToCoursesGivenByLecturer(*this);
@@ -113,6 +116,7 @@ bool Course::fireLecturerFromCourse()
         return false;
     }
 
+//    unEnroll all students, because there is no Course Lecturer anymore (until new lecturer will assign)
     removeAllStudents();
 
 //    break connection between course and lecturer
@@ -150,6 +154,7 @@ bool Course::addStudent(Student &student)
         return false;
     }
 
+//    establish connection between Course and Student
     if (student.addCourseToEnrolledCourseList(*this)) {
         if (addStudentToStudentsTakingCourseList(student))
             return true;
@@ -182,6 +187,7 @@ bool Course::removeStudent(Student &student)
         return false;
     }
 
+//    break connection between Course and Student
     if (removeStudentFromStudentsTakingCourseList(student)) {
         if (student.removeCourseFromEnrolledCourseList(*this))
             return true;
@@ -237,6 +243,7 @@ bool Course::addStudentToStudentsTakingCourseList(Student &student)
         return false;
     }
 
+//    add new student to the list
     studentElement* newStudent = new studentElement;
     newStudent->data = &student;
     newStudent->next = headOfStudentsTakingCourse;
@@ -294,6 +301,7 @@ bool Course::deactivateCourseStatus()
     removeAllStudents();
 
     courseStatus = false;
+
     return true;
 }
 
@@ -306,16 +314,16 @@ bool Course::changeNumberOfCredits(int newNumberOfCredits)
     }
 
     numberOfCredits = newNumberOfCredits;
+
     return true;
 }
 
 bool Course::isThereACourseLecturer() const
 {
     if (courseLecturer == nullptr)
-    {
         return false;
-    }
-    return true;
+    else
+        return true;
 }
 
 bool Course::isCourseCapacityFull() const

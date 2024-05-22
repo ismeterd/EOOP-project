@@ -1,4 +1,4 @@
-// Student.cpp
+// Student.cpp (Student Class Implementation)
 
 #include <iostream>
 
@@ -16,6 +16,7 @@ Student::Student(const string &name, const string &studentNumber)
 
 Student::~Student()
 {
+//    remove all elements of the list of Courses Taken by the Student
     courseElement* coursePtr = headOfCoursesTakenByStudent;
     while (coursePtr)
     {
@@ -75,6 +76,7 @@ bool Student::enrollCourse(Course &course)
         return false;
     }
 
+//    establish connection between Student and Course
     if (addCourseToEnrolledCourseList(course)) {
         if (course.addStudentToStudentsTakingCourseList(*this))
             return true;
@@ -107,6 +109,7 @@ bool Student::unEnrollCourse(Course &course)
         return false;
     }
 
+//    Break connection between Stodent and Course
     if (removeCourseFromEnrolledCourseList(course)) {
         if (course.removeStudentFromStudentsTakingCourseList(*this))
             return true;
@@ -145,6 +148,7 @@ bool Student::addCourseToEnrolledCourseList(Course& course)
         return false;
     }
 
+//    add new course to the list
     courseElement* newCourse = new courseElement;
     newCourse->data = &course;
     newCourse->next = headOfCoursesTakenByStudent;
@@ -207,7 +211,6 @@ bool Student::deactivateStudentStatus()
     while (headOfCoursesTakenByStudent != nullptr) {
         Course* course = headOfCoursesTakenByStudent->data;
         unEnrollCourse(*course);
-//        course->removeStudentFromStudentsTakingCourseList(*this);
     }
 
     activeStudent = false;
