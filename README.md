@@ -99,3 +99,27 @@ using a singly-linked list, unlike other pointers. Because only one teacher can 
 
 lecturer1 teaches course1, course2 and course3. lecturer2 only teaches course4. 
 </p>
+
+## Files
+
+- [**CMakeList.txt**](./CMakeLists.txt): Compilation File
+- [**main.cpp**](./main.cpp): It is the main program, the created classes are called and used here. This is a test 
+program which tests 71 scenarios.
+- [**School.h**](./School.h): School Class, Declaration 
+- [**School.cpp**](./School.cpp): School Class, Implementation
+- [**Lecturer.h**](./Lecturer.h): Lecturer Class, Declaration
+- [**Lecturer.cpp**](./Lecturer.cpp): Lecturer Class, Implementation
+- [**Student.h**](./Student.h): Student Class, Declaration
+- [**Student.cpp**](./Student.cpp): Student Class, Implementation
+- [**Course.h**](./Course.h): Course Class, Declaration
+- [**Course.cpp**](./Course.cpp): Course Class, Implementation
+
+## Shortcomings
+
+- The schoolPtr pointers added later also need to be updated in the Memory Map in Figure 2.
+- Destructors of classes need to be updated: If the object was previously created dynamically 
+and was deleted anywhere in the program with delete, the destructor function must break the 
+connections between them as necessary. Current destructor functions break all connections 
+to the object in one direction, that is, they are not interested in the connection of the other 
+object with itself. However, the truth is that this mechanism works both ways (Just like in 
+class methods).
